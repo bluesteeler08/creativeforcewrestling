@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>CFW Archives</title>
+<style>
+  :root{
+    --bg:#0b0b0f;
+    --panel:#14141c;
+    --panel2:#1b1b24;
+    --border:#242437;
+    --ink:#e9e9ef;
+    --muted:#a5a6b2;
+    --accent:#3ea8ff;   /* section titles (blue) */
+    --hover:#b26fff;    /* hover purple */
+    --radius:18px;
+    --shadow:0 10px 30px rgba(0,0,0,.35);
+  }
+
+  *{box-sizing:border-box}
+  html,body{margin:0;height:100%}
+
+  /* Top-anchored background glows */
+  body{
+    background:
+      
+      
+      var(--bg);
+    color:var(--ink);
+    font:16px/1.65 Inter, system-ui, Segoe UI, Arial, sans-serif;
+  }
+
+  header{
+    position:relative;
+    max-width:1120px;
+    margin:24px auto 0;
+    padding:18px 18px 24px;
+    border:1px solid var(--border);
+    border-radius:var(--radius);
+    background:
+      linear-gradient(180deg, rgba(125,249,255,.08), rgba(178,111,255,.06)),
+      var(--panel);
+    box-shadow:var(--shadow);
+  }
+
+  .topbar{display:flex;align-items:center;gap:16px}
+  .logo-badge{
+    background:#0b0b0f;border:1px solid #2a2a3d;border-radius:20px;
+    padding:6px 14px;display:inline-flex;align-items:center;justify-content:center;
+    box-shadow:0 0 12px rgba(0,0,0,.4)
+  }
+  .logo-badge img{height:85px;width:auto;border-radius:8px;display:block}
+
+  .titles h1{margin:0;font-size:clamp(22px,3vw,30px);line-height:1.05}
+  .titles p{margin:6px 0 0;color:var(--muted)}
+
+  main{max-width:1120px;margin:18px auto 80px;padding:0 18px}
+  section{margin:28px 0 44px}
+
+  h2{
+    margin:0 0 14px;letter-spacing:.12em;font-size:.92rem;text-transform:uppercase;
+    color:var(--accent);
+  }
+
+  .grid{display:grid;gap:14px;grid-template-columns:repeat(auto-fit,minmax(240px,1fr))}
+  .list{display:grid;gap:10px;grid-template-columns:repeat(auto-fit,minmax(180px,1fr))}
+
+  .card,.item{
+    position:relative;
+    background:var(--panel);
+    border:1px solid var(--border);
+    border-radius:14px;
+    padding:14px 16px;
+    box-shadow:var(--shadow);
+    transition:transform .15s, background .15s, border-color .15s;
+  }
+  .card:hover,.item:hover{background:var(--panel2);border-color:#3a3a44;transform:translateY(-2px)}
+
+  /* Links – cyan + purple hover, matching home */
+  a{color:#7ef3ff;text-decoration:none;font-weight:500;transition:color .15s ease}
+  a:hover{color:var(--hover)}
+
+  /* Ready links – purple glow dot */
+  .is-ready a::before{
+    content:"";
+    display:inline-block;width:10px;height:10px;border-radius:50%;
+    background:var(--hover);
+    box-shadow:0 0 8px var(--hover),0 0 15px rgba(178,111,255,.5);
+    margin-right:10px;vertical-align:middle;
+    transition:transform .2s ease, box-shadow .2s ease;
+  }
+  .is-ready a:hover::before{transform:scale(1.2);box-shadow:0 0 10px #c78eff,0 0 18px rgba(199,142,255,.6)}
+
+  /* Soon: keep gray and show a static badge (no hover dependency) */
+  .is-soon a{pointer-events:none;color:var(--muted)}
+  .is-soon::after{
+    content:"SOON";
+    position:absolute;top:10px;right:12px;
+    font-size:10px;letter-spacing:.14em;text-transform:uppercase;
+    color:var(--muted);border:1px dashed #3a3a44;padding:3px 6px;border-radius:999px;background:#0f0f16;
+  }
+
+  /* Safety: hide any stray top-level “soon” element if one ever appears */
+  body > .soon, body > .badge-soon, body > .pill-soon {display:none!important}
+
+  footer{color:var(--muted);text-align:center;padding:20px 0;border-top:1px solid #1f1f2c}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="topbar">
+    <!-- Clickable logo back to home -->
+    <a class="logo-badge" href="https://creativeforcewrestling.com/">
+      <img src="images/cfwlogo.jpg" alt="CFW logo (back to Home)">
+    </a>
+    <div class="titles">
+      <h1>Creative Force Wrestling — Archives</h1>
+      <p>
+        All shows are presented in PDF format. Some may contain mild language.
+        New events are regularly added to the archives—visit the Discord for the very latest.
+        Records are updated periodically.
+      </p>
+    </div>
+  </div>
+</header>
+
+<main>
+  <!-- PPV Shows -->
+  <section>
+    <h2>PPV Shows</h2>
+    <div class="grid">
+      <div class="card is-soon"><a href="#">Reclamation</a></div>
+      <div class="card is-soon"><a href="#">Afterglow</a></div>
+      <div class="card is-soon"><a href="#">Locked In</a></div>
+      <div class="card is-soon"><a href="#">Face Off</a></div>
+
+      <div class="card is-ready"><a href="https://shows.creativeforcewrestling.com/dominion.pdf">Dominion</a></div>
+      <div class="card is-ready"><a href="https://shows.creativeforcewrestling.com/crossroads.pdf">Crossroads</a></div>
+      <div class="card is-ready"><a href="https://shows.creativeforcewrestling.com/run_it_back.pdf">Run It Back</a></div>
+    </div>
+  </section>
+
+  <!-- Black Light Episodes -->
+  <section>
+    <h2>Black Light — Episodes</h2>
+    <div class="list">
+      <!-- Toggle .is-ready / .is-soon and add links as you go -->
+      <div class="item is-soon"><a href="#">Episode 1</a></div>
+      <div class="item is-soon"><a href="#">Episode 2</a></div>
+      <div class="item is-soon"><a href="#">Episode 3</a></div>
+      <div class="item is-soon"><a href="#">Episode 4</a></div>
+      <div class="item is-soon"><a href="#">Episode 5</a></div>
+      <div class="item is-soon"><a href="#">Episode 6</a></div>
+      <div class="item is-soon"><a href="#">Episode 7</a></div>
+      <div class="item is-soon"><a href="#">Episode 8</a></div>
+      <div class="item is-soon"><a href="#">Episode 9</a></div>
+      <div class="item is-soon"><a href="#">Episode 10</a></div>
+      <div class="item is-soon"><a href="#">Episode 11</a></div>
+      <div class="item is-soon"><a href="#">Episode 12</a></div>
+      <div class="item is-soon"><a href="#">Episode 13</a></div>
+      <div class="item is-soon"><a href="#">Episode 14</a></div>
+      <div class="item is-soon"><a href="#">Episode 15</a></div>
+      <div class="item is-soon"><a href="#">Episode 16</a></div>
+      <div class="item is-soon"><a href="#">Episode 17</a></div>
+
+      <div class="item is-ready"><a href="https://shows.creativeforcewrestling.com/blacklight18.pdf">Episode 18</a></div>
+      <div class="item is-ready"><a href="https://shows.creativeforcewrestling.com/blacklight19.pdf">Episode 19</a></div>
+      <div class="item is-ready"><a href="https://shows.creativeforcewrestling.com/blacklight20.pdf">Episode 20</a></div>
+      <div class="item is-ready"><a href="https://shows.creativeforcewrestling.com/blacklight21.pdf">Episode 21</a></div>
+      <div class="item is-ready"><a href="https://shows.creativeforcewrestling.com/blacklight22.pdf">Episode 22</a></div>
+      <div class="item is-ready"><a href="https://shows.creativeforcewrestling.com/blacklight23.pdf">Episode 23</a></div>
+      <div class="item is-ready"><a href="https://shows.creativeforcewrestling.com/blacklight24.pdf">Episode 24</a></div>
+      <div class="item is-ready"><a href="https://shows.creativeforcewrestling.com/blacklight25.pdf">Episode 25</a></div>
+      <div class="item is-ready"><a href="https://shows.creativeforcewrestling.com/blacklight26.pdf">Episode 26</a></div>
+      <div class="item is-ready"><a href="https://shows.creativeforcewrestling.com/blacklight27.pdf">Episode 27</a></div>
+    </div>
+  </section>
+
+  <!-- SpeedRun -->
+  <section>
+    <h2>SpeedRun — Episodes</h2>
+    <div class="list">
+      <div class="item is-ready"><a href="https://shows.creativeforcewrestling.com/speedrun1.pdf">Episode 1</a></div>
+      <div class="item is-ready"><a href="https://shows.creativeforcewrestling.com/speedrun2.pdf">Episode 2</a></div>
+      <div class="item is-ready"><a href="https://shows.creativeforcewrestling.com/speedrun3.pdf">Episode 3</a></div>
+      <div class="item is-ready"><a href="https://shows.creativeforcewrestling.com/speedrun4.pdf">Episode 4</a></div>
+    </div>
+  </section>
+
+  <!-- Records anchor (for Home page “Records” button) -->
+  <section id="records">
+    <h2>Records</h2>
+    <div class="grid">
+      <div class="card is-soon"><a href="#">Singles Division</a></div>
+      <div class="card is-soon"><a href="#">Tag Team Division</a></div>
+      <div class="card is-soon"><a href="#">Prospects</a></div>
+    </div>
+  </section>
+</main>
+
+<footer>© <span id="y"></span> Creative Force Wrestling</footer>
+<script>document.getElementById('y').textContent=new Date().getFullYear();</script>
+</body>
+</html>
