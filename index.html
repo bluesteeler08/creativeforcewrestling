@@ -125,6 +125,28 @@
   body > .soon, body > .badge-soon, body > .pill-soon {display:none!important}
 
   footer{color:var(--muted);text-align:center;padding:20px 0;border-top:1px solid #1f1f2c}
+  .page-title {
+  margin: 0;
+  line-height: 1.1;
+}
+
+.page-title .subnav-inline {
+  font-size: 0.95rem;
+  font-weight: 500;
+  margin-left: 14px;
+  white-space: nowrap;
+}
+
+.page-title .subnav-inline a {
+  color: #ffffff;
+  text-decoration: none;
+  transition: color .25s ease;
+}
+
+.page-title .subnav-inline a:hover {
+  color: #c084fc; /* purple hover */
+}
+
 </style>
 </head>
   <!-- Basic Meta -->
@@ -159,7 +181,13 @@
       <img src="images/cfwlogo.jpg" alt="CFW logo (back to Home)">
     </a>
     <div class="titles">
-      <h1>Creative Force Wrestling — Archive</h1>
+<h1 class="page-title">
+  Show Archive
+  <span class="subnav-inline">
+    <a href="https://creativeforcewrestling.com/">Home</a> |
+    <a href="https://roster.creativeforcewrestling.com/">Roster</a>
+  </span>
+</h1>
       <p>
         All shows are presented in PDF format. Some may contain mild language.
         New events are regularly added to the archives—visit the Discord for the very latest.
