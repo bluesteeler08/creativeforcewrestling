@@ -121,14 +121,30 @@
   }
   .is-ready a:hover::before{transform:scale(1.2);box-shadow:0 0 10px #c78eff,0 0 18px rgba(199,142,255,.6)}
 
-  /* Soon: keep gray and show a static badge (no hover dependency) */
-  .is-soon a{pointer-events:none;color:var(--muted)}
-  .is-soon::after{
-    content:"SOON";
-    position:absolute;top:10px;right:12px;
-    font-size:10px;letter-spacing:.14em;text-transform:uppercase;
-    color:var(--muted);border:1px dashed #3a3a44;padding:3px 6px;border-radius:999px;background:#0f0f16;
+  /* Toggle one status: .is-ready, .is-soon, or .is-upcoming.
+     When ready, switch to .is-ready and add the PDF href. */
+  .is-soon,.is-upcoming{
+    display:flex;
+    flex-wrap:wrap;
+    align-items:center;
+    gap:8px 12px;
   }
+  .is-soon a,.is-upcoming a{
+    pointer-events:none;
+    color:var(--muted);
+    flex:1 1 auto;
+    min-width:0;
+  }
+  .is-soon::after,.is-upcoming::after{
+    flex:0 0 auto;
+    margin-left:auto;
+    font-size:10px;letter-spacing:.14em;text-transform:uppercase;
+    white-space:nowrap;
+    color:var(--muted);border:1px dashed #3a3a44;
+    padding:3px 6px;border-radius:999px;background:#0f0f16;
+  }
+  .is-soon::after{content:"SOON"}
+  .is-upcoming::after{content:"UPCOMING"}
 
   /* Safety: hide any stray top-level “soon” element if one ever appears */
   body > .soon, body > .badge-soon, body > .pill-soon {display:none!important}
@@ -212,6 +228,7 @@
   <section>
     <h2>PPV Shows</h2>
     <div class="grid">
+      <div class="card is-upcoming"><a>Kingdom Come II</a></div>
       <div class="card is-ready"><a href="https://shows.creativeforcewrestling.com/afterburn.pdf">AFTERBURN 🔥</a></div>
       <div class="card is-ready"><a href="https://shows.creativeforcewrestling.com/kingdom_come.pdf">Kingdom Come 👑</a></div>
       <div class="card is-ready"><a href="https://shows.creativeforcewrestling.com/run_it_back.pdf">Run It Back </a></div>
@@ -227,8 +244,9 @@
   <section>
     <h2>Black Light — Episodes</h2>
     <div class="list">
-      <!-- Toggle .is-ready / .is-soon and add links as you go -->
-      <div class="item is-soon"><a>Episode 40</a></div>
+      <!-- Toggle .is-ready / .is-soon / .is-upcoming and add links as you go -->
+      <div class="item is-upcoming"><a>Episode 41</a></div>
+      <div class="item is-ready"><a href="https://shows.creativeforcewrestling.com/blacklight40.pdf">Episode 40</a></div>
       <div class="item is-ready"><a href="https://shows.creativeforcewrestling.com/blacklight39.pdf">Episode 39</a></div>
       <div class="item is-ready"><a href="https://shows.creativeforcewrestling.com/blacklight38.pdf">Episode 38</a></div>
       <div class="item is-ready"><a href="https://shows.creativeforcewrestling.com/blacklight37.pdf">Episode 37</a></div>
